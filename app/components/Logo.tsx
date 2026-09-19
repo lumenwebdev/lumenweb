@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "./ui/cn";
+import type { Locale } from "../[lang]/locales";
 
-export function Logo({ className }: { className?: string }) {
+export function Logo({ lang, className }: { lang: Locale; className?: string }) {
   return (
     <Link
-      href="/"
+      href={`/${lang}`}
       className={cn("flex items-center gap-2.5 font-display", className)}
-      aria-label="Lumen Web — página inicial"
+      aria-label="Lumen Web"
     >
       <Image
         src="/brand/logo-icon.png"
@@ -18,7 +19,7 @@ export function Logo({ className }: { className?: string }) {
         priority
       />
       <span className="text-lg font-semibold tracking-tight text-foreground">
-        Lumen<span className="text-accent">Web</span>
+        Lumen<span className="text-accent-text">Web</span>
       </span>
     </Link>
   );

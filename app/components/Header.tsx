@@ -5,19 +5,22 @@ import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { Button } from "./ui/Button";
 import { Container } from "./ui/Container";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 import { cn } from "./ui/cn";
+import type { Locale } from "../[lang]/locales";
+import type { Dictionary } from "../[lang]/dictionaries";
 
-const NAV_LINKS = [
-  { label: "Serviços", href: "#servicos" },
-  { label: "Como trabalhamos", href: "#como-trabalhamos" },
-  { label: "Resultados", href: "#prova" },
-  { label: "Depoimentos", href: "#depoimentos" },
-  { label: "Sobre", href: "#sobre" },
-];
-
-export function Header() {
+export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const navLinks = [
+    { label: dict.nav.services, href: "#servicos" },
+    { label: dict.nav.howWeWork, href: "#como-trabalhamos" },
+    { label: dict.nav.results, href: "#prova" },
+    { label: dict.nav.testimonials, href: "#depoimentos" },
+    { label: dict.nav.about, href: "#sobre" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -36,10 +39,10 @@ export function Header() {
       )}
     >
       <Container className="flex h-18 items-center justify-between py-4">
-        <Logo />
+        <Logo lang={lang} />
 
         <nav className="hidden items-center gap-8 lg:flex">
-          {NAV_LINKS.map((link) => (
+          {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -50,27 +53,31 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-3 lg:flex">
+          <LanguageSwitcher lang={lang} />
           <Button href="#cta" variant="secondary" className="!px-5 !py-2.5 text-sm">
-            Quero meu diagnóstico gratuito
+            {dict.nav.cta}
           </Button>
         </div>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="inline-flex items-center justify-center rounded-full border border-border-strong p-2 text-foreground lg:hidden"
-          aria-label="Abrir menu"
-          aria-expanded={open}
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <LanguageSwitcher lang={lang} />
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="inline-flex items-center justify-center rounded-full border border-border-strong p-2 text-foreground"
+            aria-label="Abrir menu"
+            aria-expanded={open}
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </Container>
 
       {open && (
         <div className="border-t border-border bg-background/95 backdrop-blur-lg lg:hidden">
           <Container className="flex flex-col gap-1 py-4">
-            {NAV_LINKS.map((link) => (
+            {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -80,8 +87,8 @@ export function Header() {
                 {link.label}
               </a>
             ))}
-            <Button href="#cta" className="mt-2 w-full" >
-              Quero meu diagnóstico gratuito
+            <Button href="#cta" className="mt-2 w-full">
+              {dict.nav.cta}
             </Button>
           </Container>
         </div>

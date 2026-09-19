@@ -16,8 +16,8 @@ export function Button({ href, children, variant = "primary", className }: Butto
 
   const styles =
     variant === "primary"
-      ? "bg-accent text-background hover:bg-accent-soft hover:-translate-y-0.5 shadow-[0_0_0_1px_rgba(0,209,247,0.4),0_20px_40px_-15px_rgba(0,209,247,0.55)]"
-      : "border border-border-strong text-foreground hover:border-accent/60 hover:text-accent hover:-translate-y-0.5";
+      ? "bg-accent text-on-accent hover:bg-accent-soft hover:-translate-y-0.5 shadow-[0_0_0_1px_rgba(0,194,236,0.35),0_20px_40px_-15px_rgba(0,194,236,0.45)]"
+      : "border border-border-strong text-foreground hover:border-accent/60 hover:text-accent-text hover:-translate-y-0.5";
 
   return (
     <Link

@@ -10,7 +10,7 @@ export function Eyebrow({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-2 rounded-full border border-border-strong bg-background-elevated/60 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-accent",
+        "inline-flex items-center gap-2 rounded-full border border-border-strong bg-background-elevated/60 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-accent-text",
         className,
       )}
     >

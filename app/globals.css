@@ -1,17 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --background: #04141c;
-  --background-elevated: #081f29;
-  --background-elevated-2: #0c2733;
-  --foreground: #f2fafc;
-  --muted: #8fadb8;
-  --muted-2: #5c7681;
-  --accent: #00d1f7;
-  --accent-soft: #4fe3ff;
-  --accent-dim: rgba(0, 209, 247, 0.12);
-  --border: rgba(242, 250, 252, 0.1);
-  --border-strong: rgba(242, 250, 252, 0.18);
+  --background: #ffffff;
+  --background-elevated: #f2f8fa;
+  --background-elevated-2: #e7f0f3;
+  --foreground: #05161d;
+  --muted: #4b6672;
+  --muted-2: #7b94a0;
+  --accent: #00c2ec;
+  --accent-soft: #00d1f7;
+  --accent-text: #0092b3;
+  --on-accent: #04141c;
+  --accent-dim: rgba(0, 194, 236, 0.1);
+  --border: rgba(5, 22, 29, 0.09);
+  --border-strong: rgba(5, 22, 29, 0.16);
 }
 
 @theme inline {
@@ -23,10 +25,12 @@
   --color-muted-2: var(--muted-2);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
+  --color-accent-text: var(--accent-text);
+  --color-on-accent: var(--on-accent);
   --color-border: var(--border);
   --color-border-strong: var(--border-strong);
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-sora);
+  --font-sans: var(--font-geist);
+  --font-display: var(--font-geist);
 }
 
 html {
@@ -36,32 +40,32 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
 }
 
 ::selection {
   background: var(--accent);
-  color: #04141c;
+  color: var(--on-accent);
 }
 
 .font-display {
-  font-family: var(--font-sora), var(--font-inter), ui-sans-serif, sans-serif;
+  font-family: var(--font-geist), ui-sans-serif, sans-serif;
 }
 
 .text-gradient {
-  background: linear-gradient(120deg, #ffffff 0%, #bff2ff 45%, var(--accent) 100%);
+  background: linear-gradient(120deg, var(--foreground) 0%, var(--accent-text) 55%, var(--accent) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .glow-ring {
-  box-shadow: 0 0 0 1px var(--border), 0 20px 60px -20px rgba(0, 209, 247, 0.25);
+  box-shadow: 0 0 0 1px var(--border), 0 20px 60px -20px rgba(0, 194, 236, 0.22);
 }
 
 .grid-noise {
   background-image:
-    linear-gradient(to right, rgba(242, 250, 252, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(242, 250, 252, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(5, 22, 29, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(5, 22, 29, 0.05) 1px, transparent 1px);
   background-size: 64px 64px;
 }

@@ -8,11 +8,13 @@ export function Counter({
   prefix = "",
   suffix = "",
   duration = 1.8,
+  locale = "pt-BR",
 }: {
   to: number;
   prefix?: string;
   suffix?: string;
   duration?: number;
+  locale?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -31,7 +33,7 @@ export function Counter({
   return (
     <motion.span ref={ref}>
       {prefix}
-      {value.toLocaleString("pt-BR")}
+      {value.toLocaleString(locale)}
       {suffix}
     </motion.span>
   );

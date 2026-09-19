@@ -2,11 +2,14 @@ import { Quote } from "lucide-react";
 import { Container } from "./ui/Container";
 import { Eyebrow } from "./ui/Eyebrow";
 import { Reveal } from "./ui/Reveal";
+import type { Dictionary } from "../[lang]/dictionaries";
 
 // TODO: substituir os 3 placeholders por depoimentos reais (citação, nome e empresa) antes de publicar.
 const PLACEHOLDERS = [1, 2, 3];
 
-export function Testimonials() {
+export function Testimonials({ dict }: { dict: Dictionary }) {
+  const t = dict.testimonials;
+
   return (
     <section
       id="depoimentos"
@@ -15,11 +18,11 @@ export function Testimonials() {
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
-            <Eyebrow>Depoimentos</Eyebrow>
+            <Eyebrow>{t.eyebrow}</Eyebrow>
           </Reveal>
           <Reveal delay={0.06}>
             <h2 className="mt-6 font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-              Quem já transformou processo em resultado
+              {t.title}
             </h2>
           </Reveal>
         </div>
@@ -30,11 +33,10 @@ export function Testimonials() {
               <div className="flex h-full flex-col gap-6 rounded-2xl border border-dashed border-border-strong bg-background-elevated/30 p-7">
                 <Quote className="h-6 w-6 text-muted-2" strokeWidth={1.5} />
                 <p className="flex-1 text-sm italic leading-relaxed text-muted-2">
-                  Depoimento real de cliente sobre o resultado obtido em
-                  breve.
+                  {t.placeholderQuote}
                 </p>
                 <div className="border-t border-border pt-4 text-xs font-medium uppercase tracking-wide text-muted-2">
-                  Nome · Empresa
+                  {t.placeholderName}
                 </div>
               </div>
             </Reveal>
