@@ -2,7 +2,7 @@ import type { Dictionary } from "../dictionaries";
 
 const dict: Dictionary = {
   meta: {
-    title: "Lumen Web — Sistemas, automações e sites de alta conversão",
+    title: "Lumen Web | Sistemas, automações e sites de alta conversão",
     description:
       "A Lumen Web transforma processos manuais em um ecossistema de crescimento, com sistemas de atendimento, automação comercial e estratégia digital que trabalham por você, todos os dias.",
   },
@@ -13,6 +13,9 @@ const dict: Dictionary = {
     testimonials: "Depoimentos",
     about: "Sobre",
     cta: "Quero meu diagnóstico gratuito",
+    openMenu: "Abrir menu",
+    closeMenu: "Fechar menu",
+    selectLanguage: "Selecionar idioma",
   },
   hero: {
     eyebrow: "Sistemas · Automações · Sites de Alta Conversão · Criativos",
@@ -100,9 +103,6 @@ const dict: Dictionary = {
   testimonials: {
     eyebrow: "Depoimentos",
     title: "Quem já transformou processo em resultado",
-    placeholderQuote:
-      "Depoimento real de cliente sobre o resultado obtido em breve.",
-    placeholderName: "Nome · Empresa",
   },
   about: {
     eyebrow: "Por que a Lumen",

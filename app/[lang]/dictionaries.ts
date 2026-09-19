@@ -14,6 +14,9 @@ export type Dictionary = {
     testimonials: string;
     about: string;
     cta: string;
+    openMenu: string;
+    closeMenu: string;
+    selectLanguage: string;
   };
   hero: {
     eyebrow: string;
@@ -56,8 +59,6 @@ export type Dictionary = {
   testimonials: {
     eyebrow: string;
     title: string;
-    placeholderQuote: string;
-    placeholderName: string;
   };
   about: {
     eyebrow: string;

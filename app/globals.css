@@ -69,3 +69,75 @@ body {
     linear-gradient(to bottom, rgba(5, 22, 29, 0.05) 1px, transparent 1px);
   background-size: 64px 64px;
 }
+
+/* Dark section scope: flips the token set for a band without a second theme system. */
+.section-dark {
+  --background: #05161d;
+  --background-elevated: #0d2530;
+  --background-elevated-2: #123240;
+  --foreground: #f4fafc;
+  --muted: #9fb7c1;
+  --muted-2: #6d8a95;
+  --accent-text: #00d1f7;
+  --on-accent: #04141c;
+  --border: rgba(244, 250, 252, 0.12);
+  --border-strong: rgba(244, 250, 252, 0.22);
+}
+
+/* Fluid display type scale, dexa-style: huge, tight tracking, short leading. */
+.text-display-1 {
+  font-size: clamp(2.5rem, 1.6rem + 4.2vw, 8rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+}
+
+.text-display-2 {
+  font-size: clamp(2rem, 1.35rem + 3vw, 4.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+
+.text-display-3 {
+  font-size: clamp(1.5rem, 1.15rem + 1.6vw, 2.75rem);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+}
+
+.eyebrow-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee-scroll 28s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-marquee {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

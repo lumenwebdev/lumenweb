@@ -13,7 +13,7 @@ const SHORT_LABEL: Record<Locale, string> = {
   "pt-PT": "PT-PT",
 };
 
-export function LanguageSwitcher({ lang }: { lang: Locale }) {
+export function LanguageSwitcher({ lang, label }: { lang: Locale; label: string }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -23,8 +23,15 @@ export function LanguageSwitcher({ lang }: { lang: Locale }) {
         setOpen(false);
       }
     }
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpen(false);
+    }
     document.addEventListener("click", onClick);
-    return () => document.removeEventListener("click", onClick);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("click", onClick);
+      document.removeEventListener("keydown", onKeyDown);
+    };
   }, []);
 
   return (
@@ -32,8 +39,8 @@ export function LanguageSwitcher({ lang }: { lang: Locale }) {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex items-center gap-1.5 rounded-full border border-border-strong px-3 py-2 text-xs font-semibold text-foreground transition-colors hover:border-accent/50"
-        aria-label="Selecionar idioma"
+        className="inline-flex items-center gap-1.5 rounded-full border border-border-strong px-3 py-2 text-xs font-semibold text-foreground transition-colors hover:border-accent/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        aria-label={label}
         aria-expanded={open}
       >
         <Globe className="h-3.5 w-3.5" strokeWidth={1.75} />
@@ -49,7 +56,7 @@ export function LanguageSwitcher({ lang }: { lang: Locale }) {
               href={`/${locale}`}
               onClick={() => setOpen(false)}
               className={cn(
-                "block px-4 py-2.5 text-sm transition-colors hover:bg-background-elevated",
+                "block px-4 py-2.5 text-sm transition-colors hover:bg-background-elevated focus-visible:outline-none focus-visible:bg-background-elevated",
                 locale === lang
                   ? "font-semibold text-accent-text"
                   : "text-foreground",

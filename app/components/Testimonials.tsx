@@ -1,14 +1,40 @@
+"use client";
+
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Quote } from "lucide-react";
 import { Container } from "./ui/Container";
 import { Eyebrow } from "./ui/Eyebrow";
 import { Reveal } from "./ui/Reveal";
+import { cn } from "./ui/cn";
+import { getRealTestimonials } from "../[lang]/testimonials";
 import type { Dictionary } from "../[lang]/dictionaries";
+import type { Locale } from "../[lang]/locales";
 
-// TODO: substituir os 3 placeholders por depoimentos reais (citação, nome e empresa) antes de publicar.
-const PLACEHOLDERS = [1, 2, 3];
-
-export function Testimonials({ dict }: { dict: Dictionary }) {
+export function Testimonials({ dict, lang }: { dict: Dictionary; lang: Locale }) {
   const t = dict.testimonials;
+  const items = getRealTestimonials(lang);
+  const [active, setActive] = useState(0);
+
+  if (items.length === 0) {
+    if (process.env.NODE_ENV === "production") return null;
+
+    return (
+      <section
+        id="depoimentos"
+        className="scroll-mt-24 border-t border-dashed border-border-strong py-16"
+      >
+        <Container>
+          <p className="rounded-2xl border border-dashed border-border-strong bg-background-elevated/40 p-6 text-sm text-muted-2">
+            [dev only] Seção de depoimentos oculta em produção: adicione itens reais
+            em <code>app/[lang]/testimonials.ts</code> para exibi-la.
+          </p>
+        </Container>
+      </section>
+    );
+  }
+
+  const current = items[active];
 
   return (
     <section
@@ -21,27 +47,54 @@ export function Testimonials({ dict }: { dict: Dictionary }) {
             <Eyebrow>{t.eyebrow}</Eyebrow>
           </Reveal>
           <Reveal delay={0.06}>
-            <h2 className="mt-6 font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+            <h2 className="mt-6 font-display text-display-2 font-medium text-balance">
               {t.title}
             </h2>
           </Reveal>
         </div>
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-3">
-          {PLACEHOLDERS.map((n, i) => (
-            <Reveal key={n} delay={i * 0.08}>
-              <div className="flex h-full flex-col gap-6 rounded-2xl border border-dashed border-border-strong bg-background-elevated/30 p-7">
-                <Quote className="h-6 w-6 text-muted-2" strokeWidth={1.5} />
-                <p className="flex-1 text-sm italic leading-relaxed text-muted-2">
-                  {t.placeholderQuote}
+        <Reveal delay={0.12}>
+          <div className="mx-auto mt-16 max-w-3xl text-center">
+            <Quote className="mx-auto h-8 w-8 text-accent-text" strokeWidth={1.5} />
+
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.4 }}
+              >
+                <p className="mt-6 text-balance font-display text-2xl font-medium leading-snug sm:text-3xl">
+                  {current.quote}
                 </p>
-                <div className="border-t border-border pt-4 text-xs font-medium uppercase tracking-wide text-muted-2">
-                  {t.placeholderName}
-                </div>
+                <p className="mt-6 text-sm font-medium uppercase tracking-wide text-muted">
+                  {current.name} · {current.company}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+
+            {items.length > 1 && (
+              <div className="mt-10 flex items-center justify-center gap-3">
+                {items.map((item, i) => (
+                  <button
+                    key={item.name}
+                    type="button"
+                    onClick={() => setActive(i)}
+                    className={cn(
+                      "rounded-sm font-display text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent",
+                      i === active ? "text-accent-text" : "text-muted-2 hover:text-muted",
+                    )}
+                    aria-label={`${item.name} · ${item.company}`}
+                    aria-current={i === active}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </button>
+                ))}
               </div>
-            </Reveal>
-          ))}
-        </div>
+            )}
+          </div>
+        </Reveal>
       </Container>
     </section>
   );

@@ -2,7 +2,7 @@ import type { Dictionary } from "../dictionaries";
 
 const dict: Dictionary = {
   meta: {
-    title: "Lumen Web — Systems, automation and high-converting websites",
+    title: "Lumen Web | Systems, automation and high-converting websites",
     description:
       "Lumen Web turns manual processes into a growth ecosystem, with customer service systems, sales automation, and digital strategy working for you, every single day.",
   },
@@ -13,6 +13,9 @@ const dict: Dictionary = {
     testimonials: "Testimonials",
     about: "About",
     cta: "Get my free diagnosis",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+    selectLanguage: "Select language",
   },
   hero: {
     eyebrow: "Systems · Automation · High-Converting Websites · Creative",
@@ -100,9 +103,6 @@ const dict: Dictionary = {
   testimonials: {
     eyebrow: "Testimonials",
     title: "Those who've already turned process into results",
-    placeholderQuote:
-      "A real client testimonial about the results achieved is coming soon.",
-    placeholderName: "Name · Company",
   },
   about: {
     eyebrow: "Why Lumen",

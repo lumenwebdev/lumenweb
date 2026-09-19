@@ -23,13 +23,13 @@ export default async function Home({
     <>
       <Header lang={lang} dict={dict} />
       <main className="flex-1">
-        <Hero dict={dict} lang={lang} />
+        <Hero dict={dict} />
         <Problem dict={dict} />
         <Positioning dict={dict} />
         <Services dict={dict} />
         <HowWeWork dict={dict} />
         <Proof dict={dict} lang={lang} />
-        <Testimonials dict={dict} />
+        <Testimonials dict={dict} lang={lang} />
         <About dict={dict} />
         <FinalCTA dict={dict} />
       </main>

@@ -3,14 +3,14 @@ import { Geist } from "next/font/google";
 import "../globals.css";
 import { getDictionary, hasLocale, locales, type Locale } from "./dictionaries";
 import { notFound } from "next/navigation";
+import { SmoothScroll } from "../components/SmoothScroll";
+import { SITE_INSTAGRAM_URL, SITE_URL } from "../site-config";
 
 const geist = Geist({
   variable: "--font-geist",
   subsets: ["latin"],
   display: "swap",
 });
-
-const siteUrl = "https://lumenweb.site";
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -26,24 +26,24 @@ export async function generateMetadata({
   const dict = await getDictionary(lang);
 
   const languages = Object.fromEntries(
-    locales.map((locale) => [locale, `${siteUrl}/${locale}`]),
+    locales.map((locale) => [locale, `${SITE_URL}/${locale}`]),
   );
 
   return {
-    metadataBase: new URL(siteUrl),
+    metadataBase: new URL(SITE_URL),
     title: {
       default: dict.meta.title,
       template: `%s · Lumen Web`,
     },
     description: dict.meta.description,
     alternates: {
-      canonical: `${siteUrl}/${lang}`,
+      canonical: `${SITE_URL}/${lang}`,
       languages,
     },
     openGraph: {
       title: dict.meta.title,
       description: dict.meta.description,
-      url: `${siteUrl}/${lang}`,
+      url: `${SITE_URL}/${lang}`,
       siteName: "Lumen Web",
       locale: lang,
       type: "website",
@@ -65,6 +65,15 @@ const htmlLang: Record<Locale, string> = {
   "pt-PT": "pt-PT",
 };
 
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Lumen Web",
+  url: SITE_URL,
+  logo: `${SITE_URL}/brand/logo-icon-square-bg.png`,
+  sameAs: [SITE_INSTAGRAM_URL],
+};
+
 export default async function RootLayout({
   children,
   params,
@@ -75,7 +84,11 @@ export default async function RootLayout({
   return (
     <html lang={htmlLang[lang]} className={`${geist.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );

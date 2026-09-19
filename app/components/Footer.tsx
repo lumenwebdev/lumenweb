@@ -1,5 +1,6 @@
 import { Logo } from "./Logo";
 import { Container } from "./ui/Container";
+import { SITE_INSTAGRAM_HANDLE, SITE_INSTAGRAM_URL, SITE_URL } from "../site-config";
 import type { Locale } from "../[lang]/locales";
 import type { Dictionary } from "../[lang]/dictionaries";
 
@@ -17,7 +18,7 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         <div className="flex flex-col items-center gap-2 text-sm text-muted sm:items-end">
           <div className="flex items-center gap-4">
             <a
-              href="https://lumenweb.site"
+              href={SITE_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="transition-colors hover:text-accent-text"
@@ -26,12 +27,12 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             </a>
             <span className="text-border-strong">·</span>
             <a
-              href="https://instagram.com/lumenwebco"
+              href={SITE_INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="transition-colors hover:text-accent-text"
             >
-              @lumenwebco
+              {SITE_INSTAGRAM_HANDLE}
             </a>
           </div>
           <p className="text-xs text-muted-2">
