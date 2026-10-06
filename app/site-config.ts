@@ -14,3 +14,4 @@ export const OFERTA_WHATSAPP_URL = (text: string) =>
   `https://wa.me/${OFERTA_WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 export const OFERTA_EMAIL = "contato@lumenweb.site";
 export const OFERTA_PRICE_EUR = "249 €";
+export const OFERTA_PRICE_EUR_ANCHOR = "499 €";

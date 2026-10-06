@@ -39,8 +39,8 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="border-t border-border py-20 lg:py-28">
-      <Container>
+    <section id="faq" className="scroll-mt-24 border-t border-border py-20 lg:py-[120px]">
+      <Container maxW="max-w-7xl">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
             <Eyebrow>Perguntas frequentes</Eyebrow>

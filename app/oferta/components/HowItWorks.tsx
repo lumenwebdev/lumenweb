@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Container } from "../../components/ui/Container";
 import { Eyebrow } from "../../components/ui/Eyebrow";
 import { Reveal } from "../../components/ui/Reveal";
@@ -29,9 +32,9 @@ export function HowItWorks() {
   return (
     <section
       id="como-funciona"
-      className="scroll-mt-24 border-t border-border py-20 lg:py-28"
+      className="scroll-mt-24 border-t border-border py-20 lg:py-[120px]"
     >
-      <Container>
+      <Container maxW="max-w-7xl">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
             <Eyebrow>Como funciona</Eyebrow>
@@ -43,17 +46,29 @@ export function HowItWorks() {
           </Reveal>
         </div>
 
-        <div className="relative mx-auto mt-16 grid max-w-5xl gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="relative mx-auto mt-20 flex max-w-5xl flex-col gap-10 lg:flex-row lg:gap-0">
+          <div className="pointer-events-none absolute top-5 left-0 right-0 hidden h-px bg-border lg:block" aria-hidden />
+          <motion.div
+            className="pointer-events-none absolute top-5 left-0 right-0 hidden h-px origin-left bg-accent lg:block"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            aria-hidden
+          />
+
           {STEPS.map((step, i) => (
-            <Reveal key={step.title} delay={i * 0.08}>
-              <div className="flex flex-col gap-3">
-                <span className="font-display text-2xl font-medium text-accent-text">
+            <Reveal key={step.title} delay={i * 0.08} className="relative flex-1 lg:px-5">
+              <div className="flex items-center gap-4 lg:flex-col lg:items-start lg:gap-0">
+                <span className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-accent/40 bg-background font-display text-sm font-semibold text-accent-text">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="font-display text-lg font-medium">{step.title}</h3>
-                <p className="text-sm leading-relaxed text-muted">
-                  {step.description}
-                </p>
+                <div className="lg:mt-5">
+                  <h3 className="font-display text-lg font-medium">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">
+                    {step.description}
+                  </p>
+                </div>
               </div>
             </Reveal>
           ))}

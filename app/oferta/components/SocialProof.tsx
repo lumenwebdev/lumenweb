@@ -13,7 +13,7 @@ export function SocialProof() {
 
     return (
       <section className="border-t border-dashed border-border-strong py-16">
-        <Container>
+        <Container maxW="max-w-7xl">
           <p className="rounded-2xl border border-dashed border-border-strong bg-background-elevated/40 p-6 text-sm text-muted-2">
             [dev only] Prova social oculta em produção: adicione depoimentos
             reais em <code>app/oferta/testimonials.ts</code> para exibir esta
@@ -25,8 +25,8 @@ export function SocialProof() {
   }
 
   return (
-    <section className="border-t border-border py-20 lg:py-28">
-      <Container>
+    <section className="border-t border-border py-20 lg:py-[120px]">
+      <Container maxW="max-w-7xl">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
             <Eyebrow>Prova social</Eyebrow>
@@ -41,7 +41,7 @@ export function SocialProof() {
         <div className="mx-auto mt-14 grid max-w-5xl gap-5 sm:grid-cols-3">
           {items.map((item, i) => (
             <Reveal key={item.name} delay={i * 0.08}>
-              <div className="flex h-full flex-col gap-4 rounded-2xl border border-border bg-background-elevated/50 p-6">
+              <div className="flex h-full flex-col gap-4 rounded-[20px] border border-border bg-background-elevated/50 p-6">
                 {item.image ? (
                   <Image
                     src={item.image}

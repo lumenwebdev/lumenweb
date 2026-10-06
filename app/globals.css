@@ -84,6 +84,25 @@ body {
   --border-strong: rgba(244, 250, 252, 0.22);
 }
 
+/* Oferta (Portugal sales page) theme: own dark scope, pinned to the exact
+   brand palette for that page, kept separate from .section-dark so it never
+   touches the institutional site's dark bands. */
+.oferta-theme {
+  --background: #001b20;
+  --background-elevated: #052830;
+  --background-elevated-2: #0a333d;
+  --foreground: #ffffff;
+  --muted: rgba(255, 255, 255, 0.7);
+  --muted-2: rgba(255, 255, 255, 0.5);
+  --accent: #00d1f7;
+  --accent-soft: #00e4ff;
+  --accent-text: #00d1f7;
+  --on-accent: #001b20;
+  --accent-dim: rgba(0, 209, 247, 0.1);
+  --border: rgba(0, 209, 247, 0.15);
+  --border-strong: rgba(0, 209, 247, 0.3);
+}
+
 /* Fluid display type scale, dexa-style: huge, tight tracking, short leading. */
 .text-display-1 {
   font-size: clamp(2.5rem, 1.6rem + 4.2vw, 8rem);

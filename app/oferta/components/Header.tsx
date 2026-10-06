@@ -8,6 +8,13 @@ import { Container } from "../../components/ui/Container";
 import { cn } from "../../components/ui/cn";
 import { OFERTA_WHATSAPP_URL } from "../../site-config";
 
+const NAV_LINKS = [
+  { href: "#servicos", label: "Serviços" },
+  { href: "#trabalhos", label: "Projetos" },
+  { href: "#como-funciona", label: "Como Funciona" },
+  { href: "#faq", label: "FAQ" },
+];
+
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
 
@@ -27,7 +34,7 @@ export function Header() {
           : "border-b border-transparent bg-transparent",
       )}
     >
-      <Container className="flex h-18 items-center justify-between py-4">
+      <Container maxW="max-w-7xl" className="flex h-18 items-center justify-between py-4">
         <Link href="/oferta" className="flex items-center gap-2.5 font-display" aria-label="Lumen Web">
           <Image
             src="/brand/logo-icon.png"
@@ -41,6 +48,18 @@ export function Header() {
             Lumen<span className="text-accent-text">Web</span>
           </span>
         </Link>
+
+        <nav className="hidden items-center gap-8 lg:flex">
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-sm font-medium text-muted transition-colors hover:text-foreground"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
 
         <Button
           href={OFERTA_WHATSAPP_URL("Olá! Vi a oferta de 249 € e quero saber mais.")}

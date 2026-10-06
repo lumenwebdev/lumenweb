@@ -43,11 +43,11 @@ const WORK = [
 
 export function Portfolio() {
   return (
-    <section id="trabalhos" className="scroll-mt-24 border-t border-border py-20 lg:py-28">
-      <Container>
+    <section id="trabalhos" className="scroll-mt-24 border-t border-border py-20 lg:py-[120px]">
+      <Container maxW="max-w-7xl">
         <div className="max-w-2xl">
           <Reveal>
-            <Eyebrow>Trabalhos feitos</Eyebrow>
+            <Eyebrow>Projetos Recentes</Eyebrow>
           </Reveal>
           <Reveal delay={0.06}>
             <h2 className="mt-6 font-display text-display-2 font-medium text-balance">
@@ -64,14 +64,14 @@ export function Portfolio() {
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {WORK.map((item, i) => (
             <Reveal key={item.name} delay={(i % 3) * 0.06}>
-              <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-background-elevated/50">
+              <div className="group flex h-full flex-col overflow-hidden rounded-[20px] border border-border bg-background-elevated/50 transition-colors hover:border-border-strong">
                 <div className="relative h-44 overflow-hidden bg-background-elevated-2">
                   <Image
                     src={item.image}
                     alt={`Site de ${item.name}`}
                     fill
                     sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover object-top"
+                    className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
                 <div className="flex flex-1 flex-col gap-2 p-6">

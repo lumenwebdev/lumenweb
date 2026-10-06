@@ -6,7 +6,7 @@ import { OFERTA_EMAIL, OFERTA_WHATSAPP_URL } from "../../site-config";
 export function Footer() {
   return (
     <footer className="border-t border-border py-12">
-      <Container className="flex flex-col items-center gap-6 text-center sm:flex-row sm:justify-between sm:text-left">
+      <Container maxW="max-w-7xl" className="flex flex-col items-center gap-6 text-center sm:flex-row sm:justify-between sm:text-left">
         <div className="flex flex-col items-center gap-2 sm:items-start">
           <Link href="/oferta" className="flex items-center gap-2.5 font-display" aria-label="Lumen Web">
             <Image
