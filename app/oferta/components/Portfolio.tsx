@@ -1,44 +1,43 @@
+import Image from "next/image";
 import { Container } from "../../components/ui/Container";
 import { Eyebrow } from "../../components/ui/Eyebrow";
 import { Reveal } from "../../components/ui/Reveal";
-import { HelixLoop } from "../../components/HelixLoop";
 
 const WORK = [
   {
-    name: "Camargo&Co.",
-    tags: "Imobiliário de luxo · 3 idiomas",
+    name: "Nexora",
+    tags: "SaaS · Página de vendas",
     description:
-      "Site institucional para um family office imobiliário, com quiz de entrada e versões em português, espanhol e inglês.",
+      "Página de vendas para um SaaS, com prova social de marcas, secção de benefícios e processo em etapas claras.",
+    image: "/portfolio/nexora.webp",
   },
   {
-    name: "MKSEG Seguros",
-    tags: "Seguros · Site institucional",
+    name: "Como Cuidar do Seu Pet",
+    tags: "Infoproduto · Página de vendas",
     description:
-      "Novo site para uma corretora de seguros, a apresentar todos os serviços com a identidade visual da marca.",
+      "Página de vendas de um e-book para tutores de pets, com quiz de identificação do problema, prova social e oferta com urgência.",
+    image: "/portfolio/cuidar-do-pet.webp",
   },
   {
-    name: "DOMUS PRIME",
-    tags: "Imobiliário · Landing page",
+    name: "Petry",
+    tags: "Arquitetura e indústria · Site institucional",
     description:
-      "Landing page de imóveis de alto padrão, com animações ao percorrer a página.",
+      "Site técnico para um sistema de esquadrias de alto padrão, com especificações de produto e benefícios por aplicação.",
+    image: "/portfolio/petry.webp",
   },
   {
-    name: "TZ Viagens",
-    tags: "Turismo · Marca e anúncios",
+    name: "Impregraf",
+    tags: "Gráfica · Site institucional",
     description:
-      "Agência de viagens com quem trabalhamos de forma contínua em conteúdos, anúncios e na app de roteiros.",
+      "Site para uma gráfica com mais de 26 anos, com catálogo de produtos, portefólio de trabalhos e formulário de orçamento.",
+    image: "/portfolio/impregraf.webp",
   },
   {
-    name: "Doutor Ar",
-    tags: "Serviços técnicos · Landing page",
+    name: "Dr. Leandro Gregório",
+    tags: "Saúde · Página de captação",
     description:
-      "Página de captação para uma empresa de ar condicionado, focada em pedidos de orçamento.",
-  },
-  {
-    name: "G7 Fibra",
-    tags: "Telecomunicações · Planos e preços",
-    description:
-      "Secções de planos com cartões de preço animados e apresentação dos serviços de internet e TV.",
+      "Página para um cirurgião plástico, com depoimentos reais, procedimentos detalhados e agendamento direto pelo WhatsApp.",
+    image: "/portfolio/leandro-gregorio.webp",
   },
 ];
 
@@ -57,8 +56,7 @@ export function Portfolio() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-4 text-lg text-muted">
-              Imobiliário, seguros, turismo, serviços técnicos e
-              telecomunicações.
+              SaaS, saúde, infoprodutos, indústria e comunicação visual.
             </p>
           </Reveal>
         </div>
@@ -67,15 +65,14 @@ export function Portfolio() {
           {WORK.map((item, i) => (
             <Reveal key={item.name} delay={(i % 3) * 0.06}>
               <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-background-elevated/50">
-                <div className="relative flex h-32 items-center justify-center overflow-hidden bg-background-elevated-2">
-                  <div
-                    className="absolute inset-0 opacity-50"
-                    style={{
-                      background:
-                        "radial-gradient(circle at 30% 30%, #00d1f7 0%, transparent 60%)",
-                    }}
+                <div className="relative h-44 overflow-hidden bg-background-elevated-2">
+                  <Image
+                    src={item.image}
+                    alt={`Site de ${item.name}`}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover object-top"
                   />
-                  <HelixLoop className="relative h-14 w-14 opacity-80" />
                 </div>
                 <div className="flex flex-1 flex-col gap-2 p-6">
                   <p className="eyebrow-label text-accent-text">{item.tags}</p>
