@@ -24,7 +24,9 @@ export function Hero() {
       <Container className="relative grid items-start gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
         <div>
           <Reveal>
-            <Eyebrow>Para negócios em Portugal que querem faturar mais</Eyebrow>
+            <Eyebrow icon={<span aria-hidden>🇵🇹</span>}>
+              Para negócios em Portugal que querem faturar mais
+            </Eyebrow>
           </Reveal>
 
           <Reveal delay={0.08}>

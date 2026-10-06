@@ -45,6 +45,11 @@ export function FAQ() {
           <Reveal>
             <Eyebrow>Perguntas frequentes</Eyebrow>
           </Reveal>
+          <Reveal delay={0.06}>
+            <h2 className="mt-6 font-display text-display-2 font-medium text-balance">
+              Ainda tem dúvidas?
+            </h2>
+          </Reveal>
         </div>
 
         <div className="mx-auto mt-12 max-w-2xl border-t border-border">

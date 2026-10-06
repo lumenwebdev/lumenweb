@@ -5,7 +5,7 @@ import { OFERTA_PRICE_EUR, OFERTA_WHATSAPP_URL } from "../../site-config";
 
 export function FinalCTA() {
   return (
-    <section className="section-dark border-t border-border bg-background py-20 text-foreground lg:py-32">
+    <section className="border-t border-border bg-background-elevated/60 py-20 lg:py-32">
       <div className="relative overflow-hidden">
         <div
           className="pointer-events-none absolute left-1/2 top-1/2 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-25 blur-[140px]"

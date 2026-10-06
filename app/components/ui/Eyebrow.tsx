@@ -3,9 +3,11 @@ import { cn } from "./cn";
 export function Eyebrow({
   children,
   className,
+  icon,
 }: {
   children: React.ReactNode;
   className?: string;
+  icon?: React.ReactNode;
 }) {
   return (
     <span
@@ -14,7 +16,9 @@ export function Eyebrow({
         className,
       )}
     >
-      <span className="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px_2px_rgba(0,209,247,0.7)]" />
+      {icon ?? (
+        <span className="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px_2px_rgba(0,209,247,0.7)]" />
+      )}
       {children}
     </span>
   );
