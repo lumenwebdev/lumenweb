@@ -2,6 +2,7 @@ import { MessageCircle } from "lucide-react";
 import { Button } from "../../components/ui/Button";
 import { Container } from "../../components/ui/Container";
 import { Reveal } from "../../components/ui/Reveal";
+import { WhatsAppLink } from "../../components/ui/WhatsAppLink";
 import {
   OFERTA_PRICE_EUR,
   OFERTA_PRICE_EUR_ANCHOR,
@@ -54,17 +55,14 @@ export function FinalCTA() {
               >
                 Quero o meu site por {OFERTA_PRICE_EUR}
               </Button>
-              <a
-                href={OFERTA_WHATSAPP_URL(
-                  "Olá! Vi a oferta de criação de sites por 249 € e gostaria de saber mais.",
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
+              <WhatsAppLink
+                message="Olá! Vi a oferta de criação de sites por 249 € e gostaria de saber mais."
+                trackingEvent="whatsapp_click_final_micro"
                 className="inline-flex items-center gap-1.5 text-sm font-medium text-accent-text transition-colors hover:text-foreground"
               >
                 <MessageCircle className="h-4 w-4" strokeWidth={2} aria-hidden />
                 Fale connosco pelo WhatsApp
-              </a>
+              </WhatsAppLink>
             </div>
           </Reveal>
         </Container>

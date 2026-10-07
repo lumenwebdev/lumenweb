@@ -1,17 +1,19 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { MessageCircle } from "lucide-react";
-import { trackEvent, withUtmContext } from "../../components/ui/trackEvent";
+import { buildObrigadoUrl } from "../../components/ui/trackEvent";
 import { OFERTA_WHATSAPP_NUMBER } from "../../site-config";
 
 const MESSAGE = "Olá, vim do anúncio e quero mais informações!";
 
 export function FloatingWhatsApp() {
+  const pathname = usePathname();
+  if (pathname?.startsWith("/oferta/obrigado")) return null;
+
   function handleClick(e: React.MouseEvent) {
     e.preventDefault();
-    trackEvent("whatsapp_float_click");
-    const url = `https://wa.me/${OFERTA_WHATSAPP_NUMBER}?text=${encodeURIComponent(withUtmContext(MESSAGE))}`;
-    window.open(url, "_blank", "noopener,noreferrer");
+    window.open(buildObrigadoUrl(MESSAGE, "whatsapp_float_click"), "_blank", "noopener,noreferrer");
   }
 
   return (

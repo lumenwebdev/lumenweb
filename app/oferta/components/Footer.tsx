@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "../../components/ui/Container";
-import { OFERTA_EMAIL, OFERTA_WHATSAPP_URL } from "../../site-config";
+import { WhatsAppLink } from "../../components/ui/WhatsAppLink";
+import { OFERTA_EMAIL } from "../../site-config";
 
 export function Footer() {
   return (
@@ -31,14 +32,13 @@ export function Footer() {
             {OFERTA_EMAIL}
           </a>
           <span className="text-border-strong">·</span>
-          <a
-            href={OFERTA_WHATSAPP_URL("Olá! Vi o site e quero saber mais.")}
-            target="_blank"
-            rel="noopener noreferrer"
+          <WhatsAppLink
+            message="Olá! Vi o site e quero saber mais."
+            trackingEvent="whatsapp_click_footer"
             className="transition-colors hover:text-accent-text"
           >
             WhatsApp
-          </a>
+          </WhatsAppLink>
         </div>
       </Container>
     </footer>

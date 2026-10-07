@@ -50,3 +50,18 @@ export function withUtmContext(message: string): string {
   const ref = keys.map((k) => `${k}=${utm[k]}`).join("&");
   return `${message}\n\n(ref: ${ref})`;
 }
+
+/**
+ * Builds a link to /oferta/obrigado, forwarding the intended WhatsApp
+ * message, the originating CTA (as `src`) and any utm_* params from the
+ * current page, so the Lead event fires reliably on that page's load
+ * instead of racing an outbound navigation at click time.
+ */
+export function buildObrigadoUrl(message: string, src?: string): string {
+  const params = new URLSearchParams();
+  params.set("msg", message);
+  if (src) params.set("src", src);
+  const utm = getUtmParams();
+  for (const [key, value] of Object.entries(utm)) params.set(key, value);
+  return `/oferta/obrigado?${params.toString()}`;
+}

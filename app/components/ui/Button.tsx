@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { cn } from "./cn";
-import { trackEvent, withUtmContext } from "./trackEvent";
+import { buildObrigadoUrl, trackEvent } from "./trackEvent";
 
 type ButtonProps = {
   href: string;
@@ -35,15 +35,18 @@ export function Button({
 
   function handleClick(e: React.MouseEvent) {
     onClick?.();
-    if (trackingEvent) trackEvent(trackingEvent);
 
     if (isWhatsApp) {
+      // Route through /oferta/obrigado so the Lead event fires reliably on
+      // that page's load, instead of racing the outbound navigation here.
       e.preventDefault();
       const url = new URL(href);
       const text = url.searchParams.get("text") ?? "";
-      url.searchParams.set("text", withUtmContext(text));
-      window.open(url.toString(), "_blank", "noopener,noreferrer");
+      window.open(buildObrigadoUrl(text, trackingEvent), "_blank", "noopener,noreferrer");
+      return;
     }
+
+    if (trackingEvent) trackEvent(trackingEvent);
   }
 
   return (
