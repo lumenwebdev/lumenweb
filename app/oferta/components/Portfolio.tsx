@@ -5,43 +5,15 @@ import { Eyebrow } from "../../components/ui/Eyebrow";
 import { Reveal } from "../../components/ui/Reveal";
 import { OFERTA_WHATSAPP_URL } from "../../site-config";
 
-const WORK = [
-  {
-    name: "Nexora",
-    tags: "SaaS · Página de vendas",
-    description:
-      "Página de vendas para um SaaS, com prova social de marcas, secção de benefícios e processo em etapas claras.",
-    image: "/portfolio/nexora.webp",
-  },
-  {
-    name: "Como Cuidar do Seu Pet",
-    tags: "Infoproduto · Página de vendas",
-    description:
-      "Página de vendas de um e-book para tutores de pets, com quiz de identificação do problema, prova social e oferta com urgência.",
-    image: "/portfolio/cuidar-do-pet.webp",
-  },
-  {
-    name: "Petry",
-    tags: "Arquitetura e indústria · Site institucional",
-    description:
-      "Site técnico para um sistema de esquadrias de alto padrão, com especificações de produto e benefícios por aplicação.",
-    image: "/portfolio/petry.webp",
-  },
-  {
-    name: "Impregraf",
-    tags: "Gráfica · Site institucional",
-    description:
-      "Site para uma gráfica com mais de 26 anos, com catálogo de produtos, portefólio de trabalhos e formulário de orçamento.",
-    image: "/portfolio/impregraf.webp",
-  },
-  {
-    name: "Dr. Leandro Gregório",
-    tags: "Saúde · Página de captação",
-    description:
-      "Página para um cirurgião plástico, com depoimentos reais, procedimentos detalhados e agendamento direto pelo WhatsApp.",
-    image: "/portfolio/leandro-gregorio.webp",
-  },
+const IMAGES = [
+  { src: "/portfolio/nexora.webp", alt: "Site desenvolvido pela Lumen Web para um SaaS" },
+  { src: "/portfolio/cuidar-do-pet.webp", alt: "Página de vendas desenvolvida pela Lumen Web para um infoproduto" },
+  { src: "/portfolio/petry.webp", alt: "Site institucional desenvolvido pela Lumen Web para arquitetura e indústria" },
+  { src: "/portfolio/impregraf.webp", alt: "Site institucional desenvolvido pela Lumen Web para uma gráfica" },
+  { src: "/portfolio/leandro-gregorio.webp", alt: "Página de captação desenvolvida pela Lumen Web para a área da saúde" },
 ];
+
+const TRACK = [...IMAGES, ...IMAGES];
 
 export function Portfolio() {
   return (
@@ -58,36 +30,37 @@ export function Portfolio() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-4 text-lg text-muted">
-              Alguns dos projetos desenvolvidos pela nossa equipa.
+              Mais de 400 projetos entregues. Aqui estão alguns exemplos.
             </p>
           </Reveal>
         </div>
+      </Container>
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {WORK.map((item, i) => (
-            <Reveal key={item.name} delay={(i % 3) * 0.06}>
-              <div className="group flex h-full flex-col overflow-hidden rounded-[20px] border border-border bg-background-elevated/50 transition-colors hover:border-border-strong">
-                <div className="relative h-44 overflow-hidden bg-background-elevated-2">
-                  <Image
-                    src={item.image}
-                    alt={`Site de ${item.name}`}
-                    fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-                <div className="flex flex-1 flex-col gap-2 p-6">
-                  <p className="eyebrow-label text-accent-text">{item.tags}</p>
-                  <h3 className="font-display text-lg font-medium">{item.name}</h3>
-                  <p className="text-sm leading-relaxed text-muted">
-                    {item.description}
-                  </p>
-                </div>
+      <Reveal delay={0.14}>
+        <div className="mt-14 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
+          <div
+            className="flex w-max animate-marquee items-stretch gap-6 hover:[animation-play-state:paused]"
+            style={{ animationDuration: "40s" }}
+          >
+            {TRACK.map((item, i) => (
+              <div
+                key={`${item.src}-${i}`}
+                className="relative h-[360px] w-[260px] shrink-0 overflow-hidden rounded-[20px] border border-border bg-background-elevated-2 sm:h-[440px] sm:w-[320px]"
+              >
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  fill
+                  sizes="320px"
+                  className="object-cover object-top"
+                />
               </div>
-            </Reveal>
-          ))}
+            ))}
+          </div>
         </div>
+      </Reveal>
 
+      <Container maxW="max-w-7xl">
         <Reveal delay={0.1}>
           <div className="mt-12 flex justify-center">
             <Button

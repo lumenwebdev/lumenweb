@@ -9,7 +9,7 @@ export function ProvaSocial() {
       <Container maxW="max-w-7xl">
         <Reveal>
           <p className="text-center text-sm text-muted-2">
-            Sites já no ar para negócios de diferentes setores.
+            +400 projetos entregues para negócios de diferentes setores.
           </p>
         </Reveal>
         <Reveal delay={0.06}>

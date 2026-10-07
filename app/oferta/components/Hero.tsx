@@ -159,7 +159,7 @@ export function Hero() {
 
             <div className="absolute -bottom-6 -right-2 w-[58%] rounded-[20px] border border-white/15 bg-white/8 p-4 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)] backdrop-blur-xl sm:-right-4 sm:w-[52%] sm:p-5">
               <p className="text-sm font-semibold text-foreground">
-                +5 Projetos Entregues
+                +400 Projetos Entregues
               </p>
               <ul className="mt-3 flex flex-col gap-1.5">
                 {INCLUDES.map((item) => (
