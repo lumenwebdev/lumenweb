@@ -1,16 +1,20 @@
 import Image from "next/image";
-import { Check } from "lucide-react";
+import { Check, MessageCircle } from "lucide-react";
 import { Button } from "../../components/ui/Button";
 import { Container } from "../../components/ui/Container";
 import { Eyebrow } from "../../components/ui/Eyebrow";
 import { Reveal } from "../../components/ui/Reveal";
-import { OFERTA_PRICE_EUR } from "../../site-config";
+import {
+  OFERTA_PRICE_EUR,
+  OFERTA_PRICE_EUR_ANCHOR,
+  OFERTA_WHATSAPP_URL,
+} from "../../site-config";
 
-const BENEFITS = [
-  "Entrega em 7 dias",
-  "Pagamento único",
+const TRUST_ITEMS = [
+  "Entrega em até 7 dias",
+  "Site adaptado a telemóvel",
+  "Textos incluídos",
   "WhatsApp integrado",
-  "SEO inicial incluído",
 ];
 
 const INCLUDES = [
@@ -34,38 +38,76 @@ export function Hero() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <h1 className="mt-8 max-w-xl text-[42px] font-bold leading-[1.05] text-balance lg:text-[64px]">
-              Transformamos pesquisas no Google em{" "}
-              <span className="text-accent-text">clientes</span> para o seu
-              negócio.
+            <h1 className="mt-8 max-w-xl text-[36px] font-bold leading-[1.1] text-balance lg:text-[56px]">
+              O site profissional da sua empresa, pronto{" "}
+              <span className="text-accent-text">em 7 dias</span>.
             </h1>
           </Reveal>
 
-          <Reveal delay={0.16}>
+          <Reveal delay={0.14}>
             <p className="mt-6 max-w-lg text-balance text-lg leading-relaxed text-muted">
-              Criamos o seu site completo em apenas 7 dias, com textos de
-              venda, WhatsApp integrado e estrutura pensada para gerar mais
-              contactos e pedidos de orçamento.
+              Criamos sites modernos, rápidos e preparados para gerar
+              contactos pelo WhatsApp, com design, textos, versão mobile e
+              SEO inicial incluídos.
             </p>
           </Reveal>
 
-          <Reveal delay={0.22}>
+          <Reveal delay={0.2}>
+            <div className="mt-8 flex flex-wrap items-end gap-x-4 gap-y-1">
+              <span className="text-base text-muted line-through decoration-muted-2">
+                De {OFERTA_PRICE_EUR_ANCHOR}
+              </span>
+              <span className="w-full text-sm font-medium uppercase tracking-wide text-muted-2 sm:w-auto">
+                Por apenas
+              </span>
+              <span className="font-display text-6xl font-bold leading-none text-foreground lg:text-7xl">
+                {OFERTA_PRICE_EUR}
+              </span>
+            </div>
+            <p className="mt-2 text-sm text-muted">
+              Pagamento único <span aria-hidden>•</span> Sem mensalidade
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.26}>
+            <div className="mt-8 flex flex-col items-start gap-4">
+              <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+                <Button
+                  href={OFERTA_WHATSAPP_URL(
+                    `Olá! Quero o meu site por ${OFERTA_PRICE_EUR}.`,
+                  )}
+                  trackingEvent="cta_click_hero"
+                  className="!px-8 !py-4 text-base"
+                >
+                  Quero o meu site por {OFERTA_PRICE_EUR}
+                </Button>
+                <Button href="#trabalhos" variant="secondary">
+                  Ver trabalhos
+                </Button>
+              </div>
+              <a
+                href={OFERTA_WHATSAPP_URL(
+                  `Olá! Vi a oferta de criação de sites por ${OFERTA_PRICE_EUR} e gostaria de saber mais.`,
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-accent-text transition-colors hover:text-foreground"
+              >
+                <MessageCircle className="h-4 w-4" strokeWidth={2} aria-hidden />
+                Fale connosco pelo WhatsApp
+                <span className="text-muted-2">· Resposta rápida</span>
+              </a>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.32}>
             <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-2">
-              {BENEFITS.map((item) => (
+              {TRUST_ITEMS.map((item) => (
                 <span key={item} className="inline-flex items-center gap-2">
                   <Check className="h-4 w-4 shrink-0 text-accent-text" strokeWidth={2.25} />
                   {item}
                 </span>
               ))}
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.28}>
-            <div className="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-              <Button href="#oferta">Quero o meu site por {OFERTA_PRICE_EUR}</Button>
-              <Button href="#trabalhos" variant="secondary">
-                Ver trabalhos
-              </Button>
             </div>
           </Reveal>
         </div>

@@ -1,30 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Button } from "../../components/ui/Button";
 import { Container } from "../../components/ui/Container";
 import { Eyebrow } from "../../components/ui/Eyebrow";
 import { Reveal } from "../../components/ui/Reveal";
+import { OFERTA_WHATSAPP_URL } from "../../site-config";
 
 const STEPS = [
   {
-    title: "Conversa de 15 minutos",
-    description:
-      "Por videochamada ou WhatsApp. Percebemos o seu negócio e o seu cliente.",
+    title: "Fale connosco",
+    description: "Conte-nos sobre a sua empresa e o que precisa.",
   },
   {
-    title: "Nós escrevemos tudo",
-    description:
-      "Textos, estrutura e design. Só precisa de enviar o logótipo e fotografias.",
+    title: "Criamos o seu site",
+    description: "Tratamos do design, textos e estrutura.",
   },
   {
-    title: "Revê e aprova",
-    description:
-      "Recebe o site para ver antes de ir para o ar, com ajustes incluídos.",
-  },
-  {
-    title: "Site no ar",
-    description:
-      "Publicamos no seu domínio e deixamos tudo pronto para receber contactos.",
+    title: "Publicamos",
+    description: "Depois da sua aprovação, colocamos o site online.",
   },
 ];
 
@@ -41,12 +35,12 @@ export function HowItWorks() {
           </Reveal>
           <Reveal delay={0.06}>
             <h2 className="mt-6 font-display text-display-2 font-medium text-balance">
-              Do primeiro contacto ao site no ar, em 4 passos.
+              Do primeiro contacto ao seu site no ar.
             </h2>
           </Reveal>
         </div>
 
-        <div className="relative mx-auto mt-20 flex max-w-5xl flex-col gap-10 lg:flex-row lg:gap-0">
+        <div className="relative mx-auto mt-20 flex max-w-3xl flex-col gap-10 lg:flex-row lg:gap-0">
           <div className="pointer-events-none absolute top-5 left-0 right-0 hidden h-px bg-border lg:block" aria-hidden />
           <motion.div
             className="pointer-events-none absolute top-5 left-0 right-0 hidden h-px origin-left bg-accent lg:block"
@@ -61,7 +55,7 @@ export function HowItWorks() {
             <Reveal key={step.title} delay={i * 0.08} className="relative flex-1 lg:px-5">
               <div className="flex items-center gap-4 lg:flex-col lg:items-start lg:gap-0">
                 <span className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-accent/40 bg-background font-display text-sm font-semibold text-accent-text">
-                  {String(i + 1).padStart(2, "0")}
+                  {i + 1}
                 </span>
                 <div className="lg:mt-5">
                   <h3 className="font-display text-lg font-medium">{step.title}</h3>
@@ -73,6 +67,17 @@ export function HowItWorks() {
             </Reveal>
           ))}
         </div>
+
+        <Reveal delay={0.2}>
+          <div className="mt-14 flex justify-center">
+            <Button
+              href={OFERTA_WHATSAPP_URL("Olá! Quero começar o meu site agora.")}
+              trackingEvent="cta_click_how_it_works"
+            >
+              Começar agora
+            </Button>
+          </div>
+        </Reveal>
       </Container>
     </section>
   );

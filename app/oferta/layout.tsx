@@ -3,6 +3,7 @@ import { Geist } from "next/font/google";
 import "../globals.css";
 import { SmoothScroll } from "../components/SmoothScroll";
 import { SITE_URL } from "../site-config";
+import { FloatingWhatsApp } from "./components/FloatingWhatsApp";
 
 const geist = Geist({
   variable: "--font-geist",
@@ -44,6 +45,7 @@ export default function OfertaLayout({ children }: { children: React.ReactNode }
     <html lang="pt-PT" className={`${geist.variable} h-full antialiased`}>
       <body className="oferta-theme min-h-full flex flex-col bg-background text-foreground">
         <SmoothScroll>{children}</SmoothScroll>
+        <FloatingWhatsApp />
       </body>
     </html>
   );

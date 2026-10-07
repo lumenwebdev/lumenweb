@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { cn } from "./cn";
+import { trackEvent, withUtmContext } from "./trackEvent";
 
 type ButtonProps = {
   href: string;
@@ -8,10 +11,19 @@ type ButtonProps = {
   variant?: "primary" | "secondary";
   className?: string;
   onClick?: () => void;
+  trackingEvent?: string;
 };
 
-export function Button({ href, children, variant = "primary", className, onClick }: ButtonProps) {
-  const isExternal = href.startsWith("http") || href.startsWith("mailto:");
+export function Button({
+  href,
+  children,
+  variant = "primary",
+  className,
+  onClick,
+  trackingEvent,
+}: ButtonProps) {
+  const isWhatsApp = href.startsWith("https://wa.me/");
+  const isExternal = isWhatsApp || href.startsWith("mailto:");
 
   const base =
     "group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-6 py-3.5 text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background";
@@ -21,10 +33,23 @@ export function Button({ href, children, variant = "primary", className, onClick
       ? "bg-accent text-on-accent hover:bg-accent-soft hover:-translate-y-0.5 shadow-[0_0_0_1px_rgba(0,194,236,0.35),0_20px_40px_-15px_rgba(0,194,236,0.45)]"
       : "border border-border-strong text-foreground hover:-translate-y-0.5";
 
+  function handleClick(e: React.MouseEvent) {
+    onClick?.();
+    if (trackingEvent) trackEvent(trackingEvent);
+
+    if (isWhatsApp) {
+      e.preventDefault();
+      const url = new URL(href);
+      const text = url.searchParams.get("text") ?? "";
+      url.searchParams.set("text", withUtmContext(text));
+      window.open(url.toString(), "_blank", "noopener,noreferrer");
+    }
+  }
+
   return (
     <Link
       href={href}
-      onClick={onClick}
+      onClick={handleClick}
       className={cn(base, styles, className)}
       {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
     >

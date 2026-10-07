@@ -9,29 +9,36 @@ import { cn } from "../../components/ui/cn";
 
 const ITEMS = [
   {
-    question: "Porque é tão mais barato do que outras agências?",
+    question: "Quanto tempo demora a criação do site?",
     answer:
-      "Trabalhamos com um processo fixo e focado em sites de uma página para pequenos negócios. Menos reuniões e menos voltas significam um preço justo, sem perder qualidade.",
+      "O prazo habitual é de até 7 dias, dependendo do envio das informações necessárias e do processo de aprovação.",
   },
   {
-    question: "A equipa está no Brasil. Isso complica?",
+    question: "O preço de 249 € inclui tudo?",
     answer:
-      "Não. Todo o contacto é por WhatsApp e videochamada, os textos são escritos em português de Portugal e o fuso horário permite responder durante o seu dia de trabalho.",
+      "Inclui design, textos, site responsivo, botão de WhatsApp, formulário de contacto, Google Maps e SEO inicial. Não inclui domínio nem alojamento, que são contratados à parte.",
   },
   {
-    question: "O que preciso de enviar?",
+    question: "Preciso de já ter domínio?",
     answer:
-      "O logótipo, algumas fotografias do negócio e as respostas a um questionário curto. O resto fica connosco.",
+      "Não é obrigatório. Se já tiver um domínio, publicamos o site nele. Caso ainda não tenha, ajudamos a registar um, mas o custo do domínio e do alojamento não está incluído no valor de 249 €.",
   },
   {
-    question: "E se eu precisar de mais páginas?",
-    answer:
-      "Fazemos sites maiores, lojas online e automações. Depois da conversa inicial enviamos uma proposta à medida.",
+    question: "Vocês tratam dos textos?",
+    answer: "Sim, os textos fazem parte da criação do site.",
   },
   {
-    question: "Como funciona o pagamento?",
+    question: "O site funciona no telemóvel?",
     answer:
-      "MB Way, transferência bancária, PayPal ou cartão. Pagamento único, sem mensalidades.",
+      "Sim. Todos os sites são desenvolvidos para funcionar em telemóveis, tablets e computadores.",
+  },
+  {
+    question: "Posso falar convosco pelo WhatsApp?",
+    answer: "Sim. O contacto é feito diretamente através do WhatsApp.",
+  },
+  {
+    question: "Vocês trabalham com empresas em Portugal?",
+    answer: "Sim. Todo o processo pode ser realizado remotamente.",
   },
 ];
 

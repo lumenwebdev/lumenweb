@@ -1,7 +1,9 @@
 import Image from "next/image";
+import { Button } from "../../components/ui/Button";
 import { Container } from "../../components/ui/Container";
 import { Eyebrow } from "../../components/ui/Eyebrow";
 import { Reveal } from "../../components/ui/Reveal";
+import { OFERTA_WHATSAPP_URL } from "../../site-config";
 
 const WORK = [
   {
@@ -51,12 +53,12 @@ export function Portfolio() {
           </Reveal>
           <Reveal delay={0.06}>
             <h2 className="mt-6 font-display text-display-2 font-medium text-balance">
-              Sites que já pusemos a trabalhar para negócios reais.
+              Veja o que podemos criar para a sua empresa.
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-4 text-lg text-muted">
-              SaaS, saúde, infoprodutos, indústria e comunicação visual.
+              Alguns dos projetos desenvolvidos pela nossa equipa.
             </p>
           </Reveal>
         </div>
@@ -85,6 +87,19 @@ export function Portfolio() {
             </Reveal>
           ))}
         </div>
+
+        <Reveal delay={0.1}>
+          <div className="mt-12 flex justify-center">
+            <Button
+              href={OFERTA_WHATSAPP_URL(
+                "Olá! Quero um site assim para a minha empresa.",
+              )}
+              trackingEvent="cta_click_portfolio"
+            >
+              Quero um site assim para a minha empresa
+            </Button>
+          </div>
+        </Reveal>
       </Container>
     </section>
   );

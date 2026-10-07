@@ -72,6 +72,7 @@ export function Offer() {
                   href={OFERTA_WHATSAPP_URL(
                     `Olá! Quero reservar o meu site por ${OFERTA_PRICE_EUR}.`,
                   )}
+                  trackingEvent="cta_click_offer"
                   className="w-full sm:w-auto"
                 >
                   Reservar o meu site

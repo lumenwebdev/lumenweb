@@ -64,6 +64,7 @@ export function Header() {
         <Button
           href={OFERTA_WHATSAPP_URL("Olá! Vi a oferta de 249 € e quero saber mais.")}
           variant="secondary"
+          trackingEvent="whatsapp_click_header"
           className="!px-5 !py-2.5 text-sm"
         >
           Falar no WhatsApp

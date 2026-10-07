@@ -1,11 +1,14 @@
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
-import { ProvaSocial } from "./components/ProvaSocial";
+import { BenefitsBar } from "./components/BenefitsBar";
 import { Problem } from "./components/Problem";
 import { Portfolio } from "./components/Portfolio";
 import { SocialProof } from "./components/SocialProof";
 import { Includes } from "./components/Includes";
+import { WhyChooseUs } from "./components/WhyChooseUs";
 import { HowItWorks } from "./components/HowItWorks";
+import { TeamTransparency } from "./components/TeamTransparency";
+import { PaymentMethods } from "./components/PaymentMethods";
 import { Offer } from "./components/Offer";
 import { Guarantee } from "./components/Guarantee";
 import { FAQ } from "./components/FAQ";
@@ -18,12 +21,15 @@ export default function OfertaPage() {
       <Header />
       <main className="flex-1">
         <Hero />
-        <ProvaSocial />
+        <BenefitsBar />
         <Problem />
         <Portfolio />
         <SocialProof />
         <Includes />
+        <WhyChooseUs />
         <HowItWorks />
+        <TeamTransparency />
+        <PaymentMethods />
         <Offer />
         <Guarantee />
         <FAQ />
