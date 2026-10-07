@@ -62,7 +62,7 @@ export function Header() {
         </nav>
 
         <Button
-          href={OFERTA_WHATSAPP_URL("Olá! Vi a oferta de 249 € e quero saber mais.")}
+          href={OFERTA_WHATSAPP_URL("Olá, vim do anúncio e quero mais informações!")}
           variant="secondary"
           trackingEvent="whatsapp_click_header"
           className="!px-5 !py-2.5 text-sm"

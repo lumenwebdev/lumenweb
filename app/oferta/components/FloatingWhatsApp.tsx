@@ -4,8 +4,7 @@ import { MessageCircle } from "lucide-react";
 import { trackEvent, withUtmContext } from "../../components/ui/trackEvent";
 import { OFERTA_WHATSAPP_NUMBER } from "../../site-config";
 
-const MESSAGE =
-  "Olá! Vi a oferta de criação de sites por 249 € e gostaria de saber mais.";
+const MESSAGE = "Olá, vim do anúncio e quero mais informações!";
 
 export function FloatingWhatsApp() {
   function handleClick(e: React.MouseEvent) {
